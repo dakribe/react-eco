@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 	"net/http"
-	"server/cmd/internal/datbase"
+	"server/cmd/internal/database"
 
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/chi/v5/middleware"
@@ -16,7 +16,7 @@ func main() {
 		fmt.Println("Error loading .env file")
 	}
 
-	pool := datbase.NewPostgres()
+	pool := database.NewPostgres()
 	fmt.Println(pool)
 
 	r := chi.NewRouter()
