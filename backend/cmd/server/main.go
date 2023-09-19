@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"net/http"
+	"server/cmd/internal/category"
 	"server/cmd/internal/database"
 
 	"github.com/go-chi/chi/v5"
@@ -17,13 +18,17 @@ func main() {
 	}
 
 	pool := database.NewPostgres()
-	fmt.Println(pool)
+	catRepo := category.NewCategoryRepo(pool)
+	catSvc := category.NewCategoryService(catRepo)
 
 	r := chi.NewRouter()
 	r.Use(middleware.Logger)
+
 	r.Get("/healthcheck", func(w http.ResponseWriter, r *http.Request) {
 		w.Write([]byte("OK"))
 	})
+
+	category.NewCategoryHandler(*catSvc).Register(r)
 
 	http.ListenAndServe(":8000", r)
 }

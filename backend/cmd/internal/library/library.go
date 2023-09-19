@@ -4,6 +4,6 @@ type Library struct {
 	ID          int
 	Name        string
 	Description string
-	RepoUrl string
+	RepoUrl     string
 	CategoryID  int
 }
