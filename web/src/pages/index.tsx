@@ -1,3 +1,10 @@
+import Categories from "../components/categories";
+
 export function Index() {
-  return <div>Index page</div>;
+  return (
+    <div>
+      <h1>Index</h1>
+      <Categories />
+    </div>
+  );
 }
