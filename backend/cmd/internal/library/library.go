@@ -5,5 +5,5 @@ type Library struct {
 	Name        string
 	Description string
 	RepoUrl     string
-	CategoryID  int
+	CategoryID  int `json:"-"`
 }

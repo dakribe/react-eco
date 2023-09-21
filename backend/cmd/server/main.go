@@ -5,6 +5,7 @@ import (
 	"net/http"
 	"server/cmd/internal/category"
 	"server/cmd/internal/database"
+	"server/cmd/internal/library"
 
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/chi/v5/middleware"
@@ -19,8 +20,12 @@ func main() {
 	}
 
 	pool := database.NewPostgres()
+
 	catRepo := category.NewCategoryRepo(pool)
+	libRepo := library.NewLibraryRepo(pool)
+
 	catSvc := category.NewCategoryService(catRepo)
+	libSvc := library.NewLibrarySvc(libRepo)
 
 	r := chi.NewRouter()
 	r.Use(middleware.Logger)
@@ -35,11 +40,13 @@ func main() {
 		AllowCredentials: false,
 		MaxAge:           300, // Maximum value not ignored by any of major browsers
 	}))
+
 	r.Get("/healthcheck", func(w http.ResponseWriter, r *http.Request) {
 		w.Write([]byte("OK"))
 	})
 
 	category.NewCategoryHandler(*catSvc).Register(r)
+	library.NewLibraryHandler(libSvc).Register(r)
 
 	http.ListenAndServe(":8000", r)
 }

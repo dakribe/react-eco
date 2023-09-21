@@ -33,4 +33,5 @@ func (c *CategoryHandler) getAll(w http.ResponseWriter, r *http.Request) {
 
 	render.Status(r, 201)
 	render.JSON(w, r, categories)
+	return
 }
