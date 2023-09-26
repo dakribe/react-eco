@@ -1,4 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
+import ky from "ky";
 
 type Library = {
   id: number;
@@ -8,7 +9,7 @@ type Library = {
 };
 
 async function getLibrariesById(id: number): Promise<Library[]> {
-  const res = await fetch(`http://localhost:8000/api/libraries/${id}`);
+  const res = await ky.get(`http://localhost:8000/api/libraries/${id}`);
   return await res.json();
 }
 

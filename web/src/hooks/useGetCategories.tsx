@@ -1,4 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
+import ky from "ky";
 
 type Category = {
   ID: number;
@@ -7,8 +8,8 @@ type Category = {
 };
 
 async function getCategories(): Promise<Category[]> {
-  const res = await fetch("http://localhost:8000/api/categories");
-  return await res.json();
+  const res = ky.get("http://localhost:8000/api/categories");
+  return res.json();
 }
 
 export default function useGetCategories() {
