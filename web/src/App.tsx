@@ -4,17 +4,18 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import LibrariesPage from "./pages/librariesPage";
 import "@mantine/core/styles.css";
 import { MantineProvider } from "@mantine/core";
+import Layout from "./components/Layout";
 
 const queryClient = new QueryClient();
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Index />,
-  },
-  {
-    path: "/:categoryId",
-    element: <LibrariesPage />,
+    element: <Layout />,
+    children: [
+      { path: "/", element: <Index /> },
+      { path: "/:categoryId", element: <LibrariesPage /> },
+    ],
   },
 ]);
 
