@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import ky from "ky";
 
 type Category = {
-  ID: number;
+  id: string;
   name: string;
   description: string;
 };
