@@ -6,7 +6,13 @@ import "@mantine/core/styles.css";
 import { MantineProvider } from "@mantine/core";
 import Layout from "./components/Layout";
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false,
+    },
+  },
+});
 
 const router = createBrowserRouter([
   {
@@ -23,7 +29,7 @@ const router = createBrowserRouter([
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <MantineProvider>
+      <MantineProvider defaultColorScheme="auto">
         <RouterProvider router={router} />
       </MantineProvider>
     </QueryClientProvider>
