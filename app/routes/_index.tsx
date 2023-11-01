@@ -1,8 +1,8 @@
 import { json, type MetaFunction } from "@remix-run/node";
-import { useLoaderData } from "@remix-run/react";
-import db from "~/db.server";
+import { Link, useLoaderData } from "@remix-run/react";
 import { Category } from "@prisma/client";
 import { Button } from "~/components/ui/button";
+import { prisma } from "~/db.server";
 
 export const meta: MetaFunction = () => {
   return [
@@ -12,7 +12,7 @@ export const meta: MetaFunction = () => {
 };
 
 export const loader = async () => {
-  return json(await db.category.findMany());
+  return json(await prisma.category.findMany());
 };
 
 export default function Index() {
@@ -21,7 +21,9 @@ export default function Index() {
   return (
     <div>
       {data.map((category: Category) => (
-        <h1 key={category.id}>{category.title}</h1>
+        <Link to={`/categories/${category.id}`}>
+          <h1 key={category.id}>{category.title}</h1>
+        </Link>
       ))}
       <Button>Hello world</Button>
     </div>
