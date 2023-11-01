@@ -1,7 +1,7 @@
 import { LoaderFunctionArgs, json } from "@remix-run/node";
 import { getCategoryById } from "~/models/category.server";
 import invariant from "tiny-invariant";
-import { useLoaderData } from "@remix-run/react";
+import { Link, useLoaderData } from "@remix-run/react";
 
 export const loader = async ({ params }: LoaderFunctionArgs) => {
   invariant(params.id, "Missing category id");
@@ -11,17 +11,18 @@ export const loader = async ({ params }: LoaderFunctionArgs) => {
 
 export default function Category() {
   const data = useLoaderData<typeof loader>();
-  console.log(data);
 
   return (
     <div>
       <h1 className="text-3xl">{data?.title}</h1>
       <p>{data?.description}</p>
       {data?.libraries.map((library) => (
-        <div key={library.id}>
-          <h1>{library.name}</h1>
-          <p>{library.description}</p>
-        </div>
+        <Link key={library.id} to={`/library/${library.id}`}>
+          <div>
+            <h1>{library.name}</h1>
+            <p>{library.description}</p>
+          </div>
+        </Link>
       ))}
     </div>
   );

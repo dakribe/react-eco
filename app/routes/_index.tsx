@@ -6,8 +6,8 @@ import { prisma } from "~/db.server";
 
 export const meta: MetaFunction = () => {
   return [
-    { title: "New Remix App" },
-    { name: "description", content: "Welcome to Remix!" },
+    { title: "React Eco" },
+    { name: "description", content: "Explore packages in the React ecosystem" },
   ];
 };
 
@@ -21,8 +21,8 @@ export default function Index() {
   return (
     <div>
       {data.map((category: Category) => (
-        <Link to={`/categories/${category.id}`}>
-          <h1 key={category.id}>{category.title}</h1>
+        <Link key={category.id} to={`/categories/${category.id}`}>
+          <h1>{category.title}</h1>
         </Link>
       ))}
       <Button>Hello world</Button>
