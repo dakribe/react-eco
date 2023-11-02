@@ -1,4 +1,4 @@
-import { LoaderFunctionArgs, json } from "@remix-run/node";
+import { type LoaderFunctionArgs, json } from "@remix-run/node";
 import { getCategoryById } from "~/models/category.server";
 import invariant from "tiny-invariant";
 import { Link, useLoaderData } from "@remix-run/react";
@@ -17,7 +17,7 @@ export default function Category() {
       <h1 className="text-3xl">{data?.title}</h1>
       <p>{data?.description}</p>
       {data?.libraries.map((library) => (
-        <Link key={library.id} to={`/library/${library.id}`}>
+        <Link key={library.id} to={`/libraries/${library.id}`}>
           <div>
             <h1>{library.name}</h1>
             <p>{library.description}</p>

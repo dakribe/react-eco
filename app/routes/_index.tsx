@@ -1,6 +1,6 @@
 import { json, type MetaFunction } from "@remix-run/node";
 import { Link, useLoaderData } from "@remix-run/react";
-import { Category } from "@prisma/client";
+import type { Category } from "@prisma/client";
 import { Button } from "~/components/ui/button";
 import { prisma } from "~/db.server";
 
