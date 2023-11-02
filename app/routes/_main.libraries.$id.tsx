@@ -1,6 +1,7 @@
 import { type LoaderFunctionArgs, json } from "@remix-run/node";
-import { useLoaderData } from "@remix-run/react";
+import { Link, useLoaderData } from "@remix-run/react";
 import invariant from "tiny-invariant";
+import { Button } from "~/components/ui/button";
 import { getLibrary } from "~/models/library.server";
 
 export const loader = async ({ params }: LoaderFunctionArgs) => {
@@ -12,9 +13,21 @@ export default function Library() {
   const data = useLoaderData<typeof loader>();
 
   return (
-    <div>
-      <h1>{data?.name}</h1>
-      <p>{data?.description}</p>
+    <div className="w-full">
+      <div className="max-w-5xl mx-auto mt-8">
+        <div className="flex justify-between items-center">
+          <h1 className="text-3xl font-bold">{data?.name}</h1>
+          <div className="flex space-x-4">
+            <Link to={data?.websiteUrl}>
+              <Button className="w-20 bg-foreground">Website</Button>
+            </Link>
+            <Link to={data?.repoUrl}>
+              <Button className="w-20">Github</Button>
+            </Link>
+          </div>
+        </div>
+        <p className="py-2">{data?.description}</p>
+      </div>
     </div>
   );
 }
