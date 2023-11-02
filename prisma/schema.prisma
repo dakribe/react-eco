@@ -18,9 +18,11 @@ model Category {
 }
 
 model Library {
-  id          String @id @default(uuid())
+  id          String  @id @default(uuid())
   name        String
   description String
+  repoUrl     String
+  websiteUrl  String?
 
   category   Category @relation(fields: [categoryId], references: [id])
   categoryId String
