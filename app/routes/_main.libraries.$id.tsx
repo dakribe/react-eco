@@ -6,6 +6,13 @@ import { getLibrary } from "~/models/library.server";
 
 export const loader = async ({ params }: LoaderFunctionArgs) => {
   invariant(params.id, "Missing library id");
+
+  const library = await getLibrary(params.id);
+
+  if (!library) {
+    throw new Response("Not found", { status: 404 });
+  }
+
   return json(await getLibrary(params.id));
 };
 

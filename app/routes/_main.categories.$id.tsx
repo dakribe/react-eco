@@ -6,6 +6,11 @@ import { Link, useLoaderData } from "@remix-run/react";
 export const loader = async ({ params }: LoaderFunctionArgs) => {
   invariant(params.id, "Missing category id");
   const category = await getCategoryById(params.id);
+
+  if (!category) {
+    throw new Response("Not found", { status: 404 });
+  }
+
   return json(category);
 };
 
