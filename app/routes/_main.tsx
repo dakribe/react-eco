@@ -12,24 +12,30 @@ export default function BaseLayout() {
   const categories = useLoaderData<typeof loader>();
 
   return (
-    <div>
+    <div className="flex flex-col h-screen">
       <Header />
-      <div className="flex">
-        <ul>
-          {categories.map((category) => (
-            <li key={category.id}>
-              <NavLink
-                className={({ isActive, isPending }) =>
-                  isActive ? "active" : isPending ? "pending" : ""
-                }
-                to={`/categories/${category.id}`}
-              >
-                {category.title}
-              </NavLink>
-            </li>
-          ))}
-        </ul>
-        <Outlet />
+      <div className="flex flex-1">
+        <div className="w-1/6">
+          <div className="flex">
+            <ul>
+              {categories.map((category) => (
+                <li key={category.id}>
+                  <NavLink
+                    className={({ isActive, isPending }) =>
+                      isActive ? "active" : isPending ? "pending" : ""
+                    }
+                    to={`/categories/${category.id}`}
+                  >
+                    {category.title}
+                  </NavLink>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+        <div className="flex-1 max-w-5xl mx-auto mt-8">
+          <Outlet />
+        </div>
       </div>
     </div>
   );
