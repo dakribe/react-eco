@@ -21,18 +21,20 @@ export default function Library() {
 
   return (
     <div className="w-full">
-      <div className="flex justify-between items-center">
-        <h1 className="text-3xl font-bold">{data?.name}</h1>
-        <div className="flex space-x-4">
-          <Link to={data?.websiteUrl}>
-            <Button className="w-20 bg-foreground">Website</Button>
-          </Link>
-          <Link to={data?.repoUrl}>
-            <Button className="w-20">Github</Button>
-          </Link>
+      <div className="max-w-5xl mx-auto">
+        <div className="flex justify-between items-center">
+          <h1 className="text-3xl font-bold">{data?.name}</h1>
+          <div className="flex space-x-4">
+            <Link to={data?.websiteUrl}>
+              <Button className="w-20 bg-foreground">Website</Button>
+            </Link>
+            <Link to={data?.repoUrl}>
+              <Button className="w-20">Github</Button>
+            </Link>
+          </div>
         </div>
+        <p className="py-2">{data?.description}</p>
       </div>
-      <p className="py-2">{data?.description}</p>
     </div>
   );
 }

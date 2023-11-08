@@ -7,7 +7,7 @@ body {
 }
 
 .active {
-  text-decoration: underline;
+  @apply text-primary 
 }
 
 @layer base {

@@ -17,7 +17,7 @@ export default function BaseLayout() {
       <div className="flex flex-1">
         <div className="w-1/6">
           <div className="flex">
-            <ul>
+            <ul className="flex flex-col mt-4 pl-10">
               {categories.map((category) => (
                 <li key={category.id}>
                   <NavLink
