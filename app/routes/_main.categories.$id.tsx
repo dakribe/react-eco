@@ -19,7 +19,7 @@ export default function Category() {
 
   return (
     <div>
-      <h1 className="text-3xl">{data?.title}</h1>
+      <h1 className="text-3xl font-bold">{data?.title}</h1>
       <p>{data?.description}</p>
       {data?.libraries.map((library) => (
         <Link key={library.id} to={`/libraries/${library.id}`}>
