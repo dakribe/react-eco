@@ -10,6 +10,7 @@
     "typecheck": "tsc"
   },
   "dependencies": {
+    "@octokit/rest": "^20.0.2",
     "@prisma/client": "5.5.2",
     "@radix-ui/react-icons": "^1.3.0",
     "@radix-ui/react-slot": "^1.0.2",

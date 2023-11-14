@@ -1,5 +1,5 @@
 import type { Library } from "@prisma/client";
-import { prisma } from "~/db.server";
+import { prisma } from "~/utils/db.server";
 
 export async function getLibrary(id: Library["id"]) {
   return prisma.library.findUnique({

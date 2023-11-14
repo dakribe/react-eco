@@ -1,5 +1,5 @@
 import type { Category } from "@prisma/client";
-import { prisma } from "~/db.server";
+import { prisma } from "~/utils/db.server";
 
 export async function getCategoryById(id: Category["id"]) {
   return prisma.category.findUnique({

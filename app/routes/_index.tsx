@@ -1,8 +1,8 @@
 import { json, type MetaFunction } from "@remix-run/node";
 import { Link, useLoaderData } from "@remix-run/react";
 import type { Category } from "@prisma/client";
-import { prisma } from "~/db.server";
 import { CategoryCard } from "~/components/categoryCard";
+import { prisma } from "~/utils/db.server";
 
 export const meta: MetaFunction = () => {
   return [
