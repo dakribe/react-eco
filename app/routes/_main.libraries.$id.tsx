@@ -1,5 +1,5 @@
 import { type LoaderFunctionArgs, json } from "@remix-run/node";
-import { Link, useLoaderData } from "@remix-run/react";
+import { Link, Outlet, useLoaderData } from "@remix-run/react";
 import invariant from "tiny-invariant";
 import { Button } from "~/components/ui/button";
 import { getLibrary } from "~/models/library.server";
@@ -34,6 +34,7 @@ export default function Library() {
           </div>
         </div>
         <p className="py-2">{data?.description}</p>
+        <Outlet />
       </div>
     </div>
   );
