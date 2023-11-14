@@ -24,6 +24,7 @@ model Library {
   slug        String
   description String
   repoUrl     String
+  readMeUrl   String
   websiteUrl  String?
 
   category   Category @relation(fields: [categoryId], references: [id])
