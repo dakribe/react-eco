@@ -19,7 +19,7 @@
     "@remix-run/serve": "^2.2.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",
-    "isbot": "^3.7.0",
+    "isbot": "^3.7.1",
     "lucide-react": "^0.291.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -30,9 +30,9 @@
   "devDependencies": {
     "@remix-run/dev": "^2.2.0",
     "@remix-run/eslint-config": "^2.2.0",
-    "@types/react": "^18.2.33",
-    "@types/react-dom": "^18.2.14",
-    "eslint": "^8.52.0",
+    "@types/react": "^18.2.37",
+    "@types/react-dom": "^18.2.15",
+    "eslint": "^8.53.0",
     "prisma": "5.5.2",
     "tailwindcss": "^3.3.5",
     "typescript": "^5.2.2"
