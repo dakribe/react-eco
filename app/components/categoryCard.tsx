@@ -7,7 +7,7 @@ interface Props {
 
 export function CategoryCard({ title, description }: Props) {
   return (
-    <Card className="h-36 w-72">
+    <Card className="h-36 w-72 my-2">
       <CardHeader className="font-semibold text-xl">{title}</CardHeader>
       <CardContent>{description}</CardContent>
     </Card>
