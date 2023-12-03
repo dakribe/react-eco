@@ -2,6 +2,7 @@
 CREATE TABLE "Category" (
     "id" TEXT NOT NULL,
     "title" TEXT NOT NULL,
+    "slug" TEXT NOT NULL,
     "description" TEXT NOT NULL,
 
     CONSTRAINT "Category_pkey" PRIMARY KEY ("id")
@@ -11,7 +12,11 @@ CREATE TABLE "Category" (
 CREATE TABLE "Library" (
     "id" TEXT NOT NULL,
     "name" TEXT NOT NULL,
+    "slug" TEXT NOT NULL,
     "description" TEXT NOT NULL,
+    "repo" TEXT NOT NULL,
+    "owner" TEXT NOT NULL,
+    "websiteUrl" TEXT,
     "categoryId" TEXT NOT NULL,
 
     CONSTRAINT "Library_pkey" PRIMARY KEY ("id")
