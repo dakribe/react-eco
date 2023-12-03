@@ -3,6 +3,6 @@ import { defineConfig } from "vite";
 import netlify from "solid-start-netlify";
 
 export default defineConfig({
-  plugins: [solid({ adapter: netlify({ edge: true }) })],
+  plugins: [solid({ adapter: netlify({ edge: false }) })],
   ssr: { external: ["@prisma/client"] },
 });
