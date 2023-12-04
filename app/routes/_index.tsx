@@ -1,4 +1,6 @@
-import type { MetaFunction } from "@remix-run/node";
+import { json, type MetaFunction } from "@remix-run/node";
+import { useLoaderData } from "@remix-run/react";
+import { getCategories } from "~/utils/category.server";
 
 export const meta: MetaFunction = () => {
   return [
@@ -7,7 +9,13 @@ export const meta: MetaFunction = () => {
   ];
 };
 
+export const loader = async () => {
+  return json(await getCategories());
+};
+
 export default function Index() {
+  const categories = useLoaderData<typeof loader>();
+
   return (
     <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.8" }}>
       <h1>Welcome to Remix</h1>
@@ -36,6 +44,13 @@ export default function Index() {
           </a>
         </li>
       </ul>
+      <div>
+        {categories.map((category) => (
+          <div key={category.id}>
+            <h1>{category.title}</h1>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
