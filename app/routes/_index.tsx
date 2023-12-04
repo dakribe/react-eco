@@ -1,5 +1,5 @@
 import { json, type MetaFunction } from "@remix-run/node";
-import { useLoaderData } from "@remix-run/react";
+import { Link, useLoaderData } from "@remix-run/react";
 import { getCategories } from "~/utils/category.server";
 
 export const meta: MetaFunction = () => {
@@ -47,7 +47,7 @@ export default function Index() {
       <div>
         {categories.map((category) => (
           <div key={category.id}>
-            <h1>{category.title}</h1>
+            <Link to={`/category/${category.id}`}>{category.title}</Link>
           </div>
         ))}
       </div>
