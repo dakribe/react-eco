@@ -1,7 +1,8 @@
 import { LoaderFunctionArgs, json } from "@remix-run/node";
-import { Link, useLoaderData } from "@remix-run/react";
+import { useLoaderData } from "@remix-run/react";
 import { getCategoryById } from "~/utils/category.server";
 import invariant from "tiny-invariant";
+import LibraryCard from "~/components/library-card";
 
 export async function loader({ params }: LoaderFunctionArgs) {
   invariant(params.id, "Missing category id");
@@ -12,15 +13,21 @@ export async function loader({ params }: LoaderFunctionArgs) {
 export default function Libraries() {
   const category = useLoaderData<typeof loader>();
   return (
-    <div>
-      <h1>{category?.title}</h1>
-      <ul>
-        {category?.libraries.map((library) => (
-          <Link key={library.id} to={`/library/${library.id}`}>
-            {library.name}
-          </Link>
-        ))}
-      </ul>
+    <div className="mx-auto max-w-5xl grid divide-y mt-20">
+      <div className="pb-2">
+        <h1 className="text-3xl font-bold my-2">{category?.title}</h1>
+        <p>{category?.description}</p>
+      </div>
+      <div className="pt-4">
+        <ul>
+          {category?.libraries.map((library) => (
+            <LibraryCard
+              name={library.name}
+              description={library.description}
+            />
+          ))}
+        </ul>
+      </div>
     </div>
   );
 }
