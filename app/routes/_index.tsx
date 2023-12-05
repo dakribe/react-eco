@@ -1,5 +1,6 @@
 import { json, type MetaFunction } from "@remix-run/node";
 import { Link, useLoaderData } from "@remix-run/react";
+import { CategoryCard } from "~/components/category-card";
 import { getCategories } from "~/utils/category.server";
 
 export const meta: MetaFunction = () => {
@@ -17,40 +18,25 @@ export default function Index() {
   const categories = useLoaderData<typeof loader>();
 
   return (
-    <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.8" }}>
-      <h1>Welcome to Remix</h1>
-      <ul>
-        <li>
-          <a
-            target="_blank"
-            href="https://remix.run/tutorials/blog"
-            rel="noreferrer"
-          >
-            15m Quickstart Blog Tutorial
-          </a>
-        </li>
-        <li>
-          <a
-            target="_blank"
-            href="https://remix.run/tutorials/jokes"
-            rel="noreferrer"
-          >
-            Deep Dive Jokes App Tutorial
-          </a>
-        </li>
-        <li>
-          <a target="_blank" href="https://remix.run/docs" rel="noreferrer">
-            Remix Docs
-          </a>
-        </li>
-      </ul>
-      <div>
+    <main className="mx-auto max-w-5xl mt-20">
+      <div className="mb-10">
+        <h1 className="text-6xl text-center font-black">
+          Explore open source packages in the{" "}
+          <span className="text-blue-400">React</span> ecosystem
+        </h1>
+      </div>
+      <div className="flex space-x-4 justify-between">
         {categories.map((category) => (
           <div key={category.id}>
-            <Link to={`/category/${category.id}`}>{category.title}</Link>
+            <Link to={`/category/${category.id}`}>
+              <CategoryCard
+                title={category.title}
+                description={category.description}
+              />
+            </Link>
           </div>
         ))}
       </div>
-    </div>
+    </main>
   );
 }
